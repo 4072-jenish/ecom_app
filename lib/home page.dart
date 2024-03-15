@@ -1,5 +1,4 @@
 import 'package:ecom_app/globla.dart';
-import 'package:ecom_app/second_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
@@ -21,17 +20,10 @@ class homepage extends StatelessWidget {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-      child: Row(
+      body: Row(
           children: [
         ...allproducts.map(
-          (e) => GestureDetector(
-    onTap: () {
-      Navigator.push(context,
-           MaterialPageRoute(builder: (context)=> const second_page()));
-    },
-       child:  Container(
+          (e) => Container(
             margin: const EdgeInsets.all(10),
             height: 330,
             width: 200,
@@ -48,19 +40,14 @@ class homepage extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(20)),
             ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(flex: 2,
                  child: Container(
-                  decoration:  BoxDecoration(
-                    borderRadius: const BorderRadius.only(
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
                       topRight: Radius.circular(20),
                       topLeft: Radius.circular(20),
-                    ),  
-                    image: DecorationImage(image: 
-                      NetworkImage(e['thumbnail']),
-                      fit: BoxFit.cover,
-                    ) 
+                    ),   
                   ),
                  )),
                 Expanded(
@@ -77,12 +64,11 @@ class homepage extends StatelessWidget {
                         alignment: Alignment.topLeft,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               "${e['title']}",
                               overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
+                              style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w900,
                               ),
@@ -90,7 +76,7 @@ class homepage extends StatelessWidget {
                             Text(
                               "${e['price']}",
                               overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
+                              style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w900,
                               ),
@@ -99,23 +85,20 @@ class homepage extends StatelessWidget {
                                 itemCount: 5,
                                 itemSize: 25,
                                 itemBuilder: (context, i) {
-                                  return  Icon(
+                                  return const Icon(
                                     Icons.star,
                                     color: Colors.yellow,
-                              );
-                            }),
-                           ],
-                         ),
-                       ),
-                     )),
-                   ],
-                 ),
-               ),
-             ),
-           ),
-         ],
-       ),
-     ),
+                                  );
+                                }),
+                          ],
+                        ),
+                      ),
+                    )),
+              ],
+            ),
+          ),
+        ),
+      ].toList()),
     );
   }
 }
