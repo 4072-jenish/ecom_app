@@ -1,6 +1,9 @@
+
 import 'package:ecom_app/globla.dart';
+import 'package:ecom_app/second_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+
 
 class homepage extends StatelessWidget {
   const homepage({super.key});
@@ -20,10 +23,19 @@ class homepage extends StatelessWidget {
           ),
         ],
       ),
-      body: Row(
+      body: 
+      SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+      child: Row(
           children: [
         ...allproducts.map(
-          (e) => Container(
+          (e) => GestureDetector( 
+            onTap: (){
+              Navigator.push(context,
+                MaterialPageRoute(builder: (ctx)=> second_page())
+              );
+            },
+          child: Container(
             margin: const EdgeInsets.all(10),
             height: 330,
             width: 200,
@@ -43,12 +55,16 @@ class homepage extends StatelessWidget {
               children: [
                 Expanded(flex: 2,
                  child: Container(
-                  decoration: const BoxDecoration(
+                  decoration:  BoxDecoration(
                     borderRadius: BorderRadius.only(
                       topRight: Radius.circular(20),
                       topLeft: Radius.circular(20),
                     ),   
-                  ),
+                    image: DecorationImage(
+                    image: NetworkImage(e['thumbnail']),
+                    fit: BoxFit.cover, 
+                    )
+                   ),
                  )),
                 Expanded(
                     flex: 1,
@@ -63,12 +79,13 @@ class homepage extends StatelessWidget {
                       child: Align(
                         alignment: Alignment.topLeft,
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Text(
                               "${e['title']}",
                               overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w900,
                               ),
@@ -76,12 +93,14 @@ class homepage extends StatelessWidget {
                             Text(
                               "${e['price']}",
                               overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w900,
                               ),
                             ),
                             RatingBarIndicator(
+                              rating: e['rating'].toDouble(),
+
                                 itemCount: 5,
                                 itemSize: 25,
                                 itemBuilder: (context, i) {
@@ -97,8 +116,9 @@ class homepage extends StatelessWidget {
               ],
             ),
           ),
+          ),
         ),
-      ].toList()),
+      ].toList()), ),
     );
   }
 }

@@ -25,6 +25,16 @@ class second_page extends StatelessWidget {
         ),
         centerTitle: true,
       ),
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage("https://blog.hubspot.com/hs-fs/hubfs/ecommerce%20marketing.jpg?width=595&height=400&name=ecommerce%20marketing.jpg"),
+            fit: BoxFit.cover,
+            )
+        ),
+      ),
     );
   }
 }
