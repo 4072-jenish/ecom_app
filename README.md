@@ -1,1 +1,2 @@
-<img src = "https://github.com/4072-jenish/ecom_app/assets/150036720/85375a8c-c579-44a4-917c-815ea5cc1f02" width = "300">
+<img src = "https://github.com/4072-jenish/ecom_app/assets/150036720/4acbd7f7-ac30-4b26-9a65-8c742b0523ac" width = "300">
+<img src = "https://github.com/4072-jenish/ecom_app/assets/150036720/e4094c59-c045-4645-b227-16d9f62bc5f3" width = "300">
